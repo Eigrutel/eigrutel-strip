@@ -2633,6 +2633,13 @@ main{
 }
 .import-toolbar .workspace-reset:hover{background:#7F2D30;color:#fff}
 .import-toolbar .workspace-reset:focus-visible{outline:2px solid #7F2D30;outline-offset:3px}
+.template-help-trigger{
+  display:grid;place-items:center;width:34px;height:34px;margin:0 0 12px auto;
+  border:1px solid #bccdd1;border-radius:50%;background:#fff;color:var(--ink);
+  font:800 16px/1 system-ui,sans-serif;cursor:pointer;
+}
+.template-help-trigger:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.template-help-trigger:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 @media(max-width:560px){
   .import-toolbar .workspace-reset{flex-basis:36px;width:36px;height:36px;font-size:23px}
 }
@@ -2674,6 +2681,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 </div>
 <section class="view active" id="viewTemplate">
 <aside class="panel">
+<button class="template-help-trigger" id="templateHelp" type="button" aria-label="Ouvrir le manuel du gabarit" title="Manuel du gabarit">i</button>
 <details class="group template-details"><summary class="title">Disposition</summary>
 <div class="seg">
 <button class="on" id="grid">2 × 2</button>
@@ -2823,6 +2831,36 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <details class="mini-info mini-info-note"><summary aria-label="Information">i</summary><div class="mini-info-pop">Gabarit fixe : quatre cases, contour extérieur, fond perdu, composition, lettrage et graduations.</div></details>
 </section>
 </section>
+<div class="focus-panel-backdrop hidden" id="templateHelpBackdrop"></div>
+<aside class="focus-panel hidden" id="templateHelpPanel" aria-hidden="true">
+  <div class="focus-panel-head">
+    <div>
+      <div class="focus-panel-kicker">1. Gabarit</div>
+      <h3>Manuel du gabarit</h3>
+    </div>
+    <button id="templateHelpClose" type="button" aria-label="Fermer">×</button>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Préparer le format</h4>
+    <p>Choisir la disposition : 2 × 2, strip horizontal ou Yonkoma. La hauteur des cases fixe le format de publication.</p>
+    <p>Le format de travail reste proportionnel : modifier le pourcentage, la hauteur ou la largeur recalcule automatiquement les deux autres valeurs.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Délimiter la zone de dessin</h4>
+    <p>Le contour extérieur définit la marge autour des cases. Le fond perdu prolonge le dessin au-delà du format final lorsqu’une image doit aller jusqu’au bord.</p>
+    <p>Les boutons de liaison appliquent la même valeur sur les quatre côtés.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Guides</h4>
+    <p>Les diagonales, tiers, portées de lettrage et graduations servent de repères de dessin. Ils sont visibles dans l’aperçu et dans les exports du gabarit.</p>
+    <p>Les couleurs peuvent être réglées séparément ou liées entre elles.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Presets et sortie</h4>
+    <p>Donner un nom au gabarit, puis l’enregistrer pour retrouver ses réglages plus tard dans ce navigateur.</p>
+    <p>Exporter en PNG 300 dpi, SVG ou imprimer/enregistrer en PDF avec le navigateur.</p>
+  </div>
+</aside>
 <section class="view" id="viewImport">
 <section class="preview import-focus-preview">
 <div class="head"><strong>Import et validation</strong><span id="importInfo"></span></div>
@@ -2869,10 +2907,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     </select>
   </label>
 
-  <button class="tool-info" id="importHelp" type="button" aria-label="Informations">i</button>
   <div class="workspace-actions">
     <button class="tool-produce" id="validate" type="button">Produire</button>
     <button class="workspace-reset" id="importWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
+    <button class="tool-info" id="importHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2a" title="Manuel">i</button>
   </div>
 </div>
 
@@ -2995,6 +3033,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <div class="workspace-actions">
     <button class="tool-produce" id="sepBuild" type="button">Produire</button>
     <button class="workspace-reset" id="sepWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
+    <button class="tool-info" id="sepHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2c" title="Manuel">i</button>
   </div>
 </div>
 
@@ -3127,6 +3166,34 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     </div>
   </div>
 </aside>
+<div class="focus-panel-backdrop hidden" id="sepHelpBackdrop"></div>
+<aside class="focus-panel hidden" id="sepHelpPanel" aria-hidden="true">
+  <div class="focus-panel-head">
+    <div>
+      <div class="focus-panel-kicker">2c. Images séparées</div>
+      <h3>Assembler les cases</h3>
+    </div>
+    <button id="sepHelpClose" type="button" aria-label="Fermer">×</button>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Importer les images</h4>
+    <p>Importer jusqu’à quatre images en une fois, ou les ajouter une à une avec le bouton + de chaque case.</p>
+    <p>Une case vide est produite en blanc : il est donc possible de préparer une sortie incomplète.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Régler et ordonner</h4>
+    <p>Utiliser le bouton de réglage d’une image pour ajuster son zoom et son déplacement. Les flèches de chaque case modifient l’ordre.</p>
+    <p>Choisir un découpage avec cases doubles si deux images doivent rester réunies.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Format et cadre</h4>
+    <p>Régler largeur, hauteur et inter-iconique avant de produire. Activer le cadre et son épaisseur si nécessaire.</p>
+  </div>
+  <div class="focus-panel-section">
+    <h4>Produire</h4>
+    <p>Produire prépare les images individuelles, le strip, le 2 × 2 et le Yonkoma. Le bouton × vide uniquement cet espace de travail.</p>
+  </div>
+</aside>
 <section class="results hidden" id="sepResults">
 <h2>Résultat — Images séparées</h2>
 <div class="carousel-wrap">
@@ -3157,10 +3224,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <span>Yonkoma</span>
   </label>
 
-  <button class="tool-info" id="irrHelp" type="button" aria-label="Informations">i</button>
   <div class="workspace-actions">
     <button class="tool-produce" id="irrBuild" type="button">Produire</button>
     <button class="workspace-reset" id="irrWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
+    <button class="tool-info" id="irrHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2b" title="Manuel">i</button>
   </div>
 </div>
 
@@ -4110,6 +4177,23 @@ function openImportHelp(){
   $('importHelpPanel').classList.remove('hidden');
   $('importHelpPanel').setAttribute('aria-hidden','false');
 }
+
+function openTemplateHelp(){
+  $('templateHelpBackdrop').classList.remove('hidden');
+  $('templateHelpPanel').classList.remove('hidden');
+  $('templateHelpPanel').setAttribute('aria-hidden','false');
+}
+function closeTemplateHelp(){
+  $('templateHelpBackdrop').classList.add('hidden');
+  $('templateHelpPanel').classList.add('hidden');
+  $('templateHelpPanel').setAttribute('aria-hidden','true');
+}
+$('templateHelp').addEventListener('click',openTemplateHelp);
+$('templateHelpClose').addEventListener('click',closeTemplateHelp);
+$('templateHelpBackdrop').addEventListener('click',closeTemplateHelp);
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && !$('templateHelpPanel').classList.contains('hidden'))closeTemplateHelp();
+});
 function closeImportHelp(){
   $('importHelpBackdrop').classList.add('hidden');
   $('importHelpPanel').classList.add('hidden');
@@ -5713,6 +5797,23 @@ function closeSepFocus(){
   sepFocusIndex=-1;
 }
 
+function openSepHelp(){
+  $('sepHelpBackdrop').classList.remove('hidden');
+  $('sepHelpPanel').classList.remove('hidden');
+  $('sepHelpPanel').setAttribute('aria-hidden','false');
+}
+function closeSepHelp(){
+  $('sepHelpBackdrop').classList.add('hidden');
+  $('sepHelpPanel').classList.add('hidden');
+  $('sepHelpPanel').setAttribute('aria-hidden','true');
+}
+$('sepHelp').addEventListener('click',openSepHelp);
+$('sepHelpClose').addEventListener('click',closeSepHelp);
+$('sepHelpBackdrop').addEventListener('click',closeSepHelp);
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && !$('sepHelpPanel').classList.contains('hidden'))closeSepHelp();
+});
+
 function applySepFocusValues(){
   if(sepFocusIndex<0)return;
   $(`sepZoom${sepFocusIndex+1}`).value=String((parseFloat($('sepFocusZoom').value)||100)/100);
@@ -6396,6 +6497,7 @@ function resetImportWorkspace() {
   setOutputMode('grid');
   refreshImportOutputAvailability();
   closeImportHelp();
+  closeTemplateHelp();
   clearWorkspaceResults('results', 'carousel', ['combined']);
   $('dots').replaceChildren();
   slideIndex = 0;
@@ -6428,6 +6530,7 @@ function resetIrregularWorkspace() {
 function resetSeparateWorkspace() {
   workspaceEpoch.separate++;
   closeSepFocus();
+  closeSepHelp();
   sepFocusDrag = null;
   separateImages.fill(null);
   resetWorkspaceFields('viewSeparate');
@@ -6445,6 +6548,35 @@ $('sepWorkspaceReset').addEventListener('click', resetSeparateWorkspace);
 // ---------- bilingual interface FR / EN ----------
 // Traductions des textes de l’interface ; les données personnelles sont exclues.
 const STRIP_I18N_EN = {
+  "Ouvrir le manuel du gabarit": "Open the template manual",
+  "Manuel du gabarit": "Template manual",
+  "Préparer le format": "Prepare the format",
+  "Choisir la disposition : 2 × 2, strip horizontal ou Yonkoma. La hauteur des cases fixe le format de publication.": "Choose the layout: 2 × 2, horizontal strip or Yonkoma. Panel height sets the publication format.",
+  "Le format de travail reste proportionnel : modifier le pourcentage, la hauteur ou la largeur recalcule automatiquement les deux autres valeurs.": "The working size stays proportional: changing percentage, height or width automatically recalculates the other two values.",
+  "Délimiter la zone de dessin": "Define the drawing area",
+  "Le contour extérieur définit la marge autour des cases. Le fond perdu prolonge le dessin au-delà du format final lorsqu’une image doit aller jusqu’au bord.": "The outer border defines the margin around the panels. Bleed extends artwork beyond the final format when an image reaches the edge.",
+  "Les boutons de liaison appliquent la même valeur sur les quatre côtés.": "Link controls apply the same value to all four sides.",
+  "Guides": "Guides",
+  "Les diagonales, tiers, portées de lettrage et graduations servent de repères de dessin. Ils sont visibles dans l’aperçu et dans les exports du gabarit.": "Diagonals, thirds, lettering guides and rulers are drawing guides. They are visible in the preview and in template exports.",
+  "Les couleurs peuvent être réglées séparément ou liées entre elles.": "Colours can be set independently or linked together.",
+  "Presets et sortie": "Presets and output",
+  "Donner un nom au gabarit, puis l’enregistrer pour retrouver ses réglages plus tard dans ce navigateur.": "Name the template, then save it to retrieve its settings later in this browser.",
+  "Exporter en PNG 300 dpi, SVG ou imprimer/enregistrer en PDF avec le navigateur.": "Export as 300 dpi PNG or SVG, or print/save as PDF with the browser.",
+  "Ouvrir le manuel de l’espace 2a": "Open the 2a workspace manual",
+  "Ouvrir le manuel de l’espace 2b": "Open the 2b workspace manual",
+  "Ouvrir le manuel de l’espace 2c": "Open the 2c workspace manual",
+  "Manuel": "Manual",
+  "Assembler les cases": "Assemble panels",
+  "Importer les images": "Import images",
+  "Importer jusqu’à quatre images en une fois, ou les ajouter une à une avec le bouton + de chaque case.": "Import up to four images at once, or add them one by one with the + button on each panel.",
+  "Une case vide est produite en blanc : il est donc possible de préparer une sortie incomplète.": "An empty panel is produced in white, so an incomplete output can still be prepared.",
+  "Régler et ordonner": "Adjust and reorder",
+  "Utiliser le bouton de réglage d’une image pour ajuster son zoom et son déplacement. Les flèches de chaque case modifient l’ordre.": "Use an image settings button to adjust zoom and position. The arrows on each panel change the order.",
+  "Choisir un découpage avec cases doubles si deux images doivent rester réunies.": "Choose a layout with double panels if two images must remain together.",
+  "Format et cadre": "Format and frame",
+  "Régler largeur, hauteur et inter-iconique avant de produire. Activer le cadre et son épaisseur si nécessaire.": "Set width, height and gutter before producing. Enable the frame and its thickness if needed.",
+  "Produire": "Produce",
+  "Produire prépare les images individuelles, le strip, le 2 × 2 et le Yonkoma. Le bouton × vide uniquement cet espace de travail.": "Produce prepares individual images, the strip, 2 × 2 and Yonkoma. The × button clears only this workspace.",
   "Vider et réinitialiser cet espace de travail": "Clear and reset this workspace",
   "Eigrutel BD Academy": "Eigrutel BD Academy",
   "Gabarit": "Template",
