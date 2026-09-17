@@ -892,7 +892,7 @@ html,body,button,input,select,textarea{
   cursor:not-allowed;
 }
 
-/* 2a — barre d’outil flottante */
+/* 1a — barre d’outil flottante */
 #viewImport.active{
   display:block !important;
 }
@@ -1137,7 +1137,7 @@ html,body,button,input,select,textarea{
   }
 }
 
-/* 2b — barre d’outil flottante */
+/* 1b — barre d’outil flottante */
 #viewIrregular.active{
   display:block !important;
 }
@@ -1242,7 +1242,7 @@ html,body,button,input,select,textarea{
   }
 }
 
-/* Les barres 2a/2b restent réellement flottantes pendant tout le travail. */
+/* Les barres 1a/1b restent réellement flottantes pendant tout le travail. */
 #viewImport.active .import-focus-preview,
 #viewIrregular.active .irregular-focus-preview{
   padding-top:82px;
@@ -1272,7 +1272,7 @@ html,body,button,input,select,textarea{
   }
 }
 
-/* 2c — barre d’outil flottante */
+/* 1c — barre d’outil flottante */
 #viewSeparate.active{
   display:block !important;
 }
@@ -1402,7 +1402,7 @@ html,body,button,input,select,textarea{
   }
 }
 
-/* 2c — panneau de réglage image compact */
+/* 1c — panneau de réglage image compact */
 .sep-image-focus{
   height:min(88dvh,720px);
   max-height:calc(100dvh - 24px);
@@ -1490,7 +1490,7 @@ html,body,button,input,select,textarea{
   touch-action:none;
 }
 
-/* 2c — aperçu du réglage : cadre explicite et image réellement centrée */
+/* 1c — aperçu du réglage : cadre explicite et image réellement centrée */
 .sep-focus-preview-wrap{
   height:clamp(190px,38dvh,340px);
   min-height:190px;
@@ -1858,7 +1858,7 @@ main{
   box-shadow:0 8px 24px rgba(36,48,51,.11) !important;
 }
 
-/* 2a — logique de structure : bleu */
+/* 1a — logique de structure : bleu */
 #viewImport .import-toolbar{
   background:
     linear-gradient(90deg,rgba(228,236,238,.72) 0,rgba(228,236,238,.72) 132px,rgba(250,250,247,.98) 132px) !important;
@@ -1876,7 +1876,7 @@ main{
   border-color:#bccdd1;
 }
 
-/* 2b — découpe manuelle : ocre */
+/* 1b — découpe manuelle : ocre */
 #viewIrregular .import-toolbar{
   background:
     linear-gradient(90deg,rgba(243,225,204,.8) 0,rgba(243,225,204,.8) 270px,rgba(250,250,247,.98) 270px) !important;
@@ -1900,7 +1900,7 @@ main{
   border-color:var(--eba-blue-deep);
 }
 
-/* 2c — import puis réglage : rouge pour entrée, bleu pour format */
+/* 1c — import puis réglage : rouge pour entrée, bleu pour format */
 #viewSeparate .import-toolbar{
   background:
     linear-gradient(
@@ -2271,7 +2271,7 @@ main{
   }
 }
 
-/* 2c — grille compacte : 2 × 2, puis une image par ligne si l'espace manque */
+/* 1c — grille compacte : 2 × 2, puis une image par ligne si l'espace manque */
 #viewSeparate .sep-grid{
   display:grid !important;
   grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)) !important;
@@ -2319,7 +2319,7 @@ main{
   }
 }
 
-/* 2c — ajout/remplacement et suppression directement sur chaque vignette */
+/* 1c — ajout/remplacement et suppression directement sur chaque vignette */
 #viewSeparate .sep-card input[type="file"]{
   display:none !important;
 }
@@ -2382,7 +2382,7 @@ main{
   display:none !important;
 }
 
-/* 2c — bouton + : seul signal d'import sur les cases */
+/* 1c — bouton + : seul signal d'import sur les cases */
 .sep-add-btn{
   width:38px !important;
   min-width:38px !important;
@@ -2428,7 +2428,7 @@ main{
   }
 }
 
-/* 2c — les boutons se positionnent par rapport au canvas, pas à toute la carte */
+/* 1c — les boutons se positionnent par rapport au canvas, pas à toute la carte */
 #viewSeparate .sep-canvas-wrap{
   position:relative !important;
   display:flex !important;
@@ -2453,7 +2453,7 @@ main{
   transform:translate(-50%,-50%) !important;
 }
 
-/* 2c — le + reste toujours centré sur la case */
+/* 1c — le + reste toujours centré sur la case */
 .sep-add-btn,
 .sep-card.is-empty .sep-add-btn,
 .sep-card:not(.is-empty) .sep-add-btn{
@@ -2464,7 +2464,7 @@ main{
   transform:translate(-50%,-50%) !important;
 }
 
-/* 2c — centrage visuel du signe + dans le cercle rouge */
+/* 1c — centrage visuel du signe + dans le cercle rouge */
 .sep-add-btn{
   font-size:0 !important;
   line-height:1 !important;
@@ -2477,7 +2477,7 @@ main{
   font-size:23px;
 }
 
-/* 2c — un seul +, centré */
+/* 1c — un seul +, centré */
 .sep-add-btn{
   color:transparent !important;
   overflow:hidden !important;
@@ -2596,7 +2596,7 @@ main{
   }
 }
 
-/* 2a / 2b : bouton i compact sur mobile */
+/* 1a / 1b : bouton i compact sur mobile */
 #viewImport .tool-info,
 #viewIrregular .tool-info{
   flex:0 0 42px !important;
@@ -2633,6 +2633,18 @@ main{
 }
 .import-toolbar .workspace-reset:hover{background:#7F2D30;color:#fff}
 .import-toolbar .workspace-reset:focus-visible{outline:2px solid #7F2D30;outline-offset:3px}
+/* Le gabarit clôt le parcours : gris atelier distinct du bloc éditorial. */
+.strip-tabs #tabTemplate{
+  border-left:2px solid #d8d0c4 !important;
+  background:#e1e5e2 !important;
+  color:#4d5856 !important;
+}
+.strip-tabs #tabTemplate:hover{background:#e7e1d8 !important}
+.strip-tabs #tabTemplate.active{
+  background:#6f7473 !important;
+  border-color:#6f7473 !important;
+  color:#fff !important;
+}
 .template-help-trigger{
   display:grid;place-items:center;width:34px;height:34px;margin:0 0 12px auto;
   border:1px solid #bccdd1;border-radius:50%;background:#fff;color:var(--ink);
@@ -2673,13 +2685,13 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <span class="strip-nav-kicker">Eigrutel BD Academy</span>
   <strong>strip</strong>
 </div>
-<button class="active" id="tabTemplate"><span class="tab-num">1.</span><span>Gabarit</span></button>
-<button id="tabImport"><span class="tab-num">2a.</span><span>Strip / 2 × 2</span></button>
-<button id="tabIrregular"><span class="tab-num">2b.</span><span>Strip libre</span></button>
-<button id="tabSeparate"><span class="tab-num">2c.</span><span>Images séparées</span></button>
-<button id="tabExport"><span class="tab-num">3.</span><span>Exports</span></button>
+<button class="active" id="tabImport"><span class="tab-num">1a.</span><span>Strip / 2 × 2</span></button>
+<button id="tabIrregular"><span class="tab-num">1b.</span><span>Strip libre</span></button>
+<button id="tabSeparate"><span class="tab-num">1c.</span><span>Images séparées</span></button>
+<button id="tabExport"><span class="tab-num">2.</span><span>Exports</span></button>
+<button id="tabTemplate"><span class="tab-num">3.</span><span>Gabarit</span></button>
 </div>
-<section class="view active" id="viewTemplate">
+<section class="view" id="viewTemplate">
 <aside class="panel">
 <button class="template-help-trigger" id="templateHelp" type="button" aria-label="Ouvrir le manuel du gabarit" title="Manuel du gabarit">i</button>
 <details class="group template-details"><summary class="title">Disposition</summary>
@@ -2835,7 +2847,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="focus-panel hidden" id="templateHelpPanel" aria-hidden="true">
   <div class="focus-panel-head">
     <div>
-      <div class="focus-panel-kicker">1. Gabarit</div>
+      <div class="focus-panel-kicker">3. Gabarit</div>
       <h3>Manuel du gabarit</h3>
     </div>
     <button id="templateHelpClose" type="button" aria-label="Fermer">×</button>
@@ -2861,7 +2873,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <p>Exporter en PNG 300 dpi, SVG ou imprimer/enregistrer en PDF avec le navigateur.</p>
   </div>
 </aside>
-<section class="view" id="viewImport">
+<section class="view active" id="viewImport">
 <section class="preview import-focus-preview">
 <div class="head"><strong>Import et validation</strong><span id="importInfo"></span></div>
 
@@ -2910,7 +2922,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <div class="workspace-actions">
     <button class="tool-produce" id="validate" type="button">Produire</button>
     <button class="workspace-reset" id="importWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
-    <button class="tool-info" id="importHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2a" title="Manuel">i</button>
+    <button class="tool-info" id="importHelp" type="button" aria-label="Ouvrir le manuel de l’espace 1a" title="Manuel">i</button>
   </div>
 </div>
 
@@ -2938,7 +2950,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="focus-panel hidden" id="importHelpPanel" aria-hidden="true">
   <div class="focus-panel-head">
     <div>
-      <div class="focus-panel-kicker">2a. Strip / 2 × 2</div>
+      <div class="focus-panel-kicker">1a. Strip / 2 × 2</div>
       <h3>Découpe et recalage</h3>
     </div>
     <button id="importHelpClose" type="button" aria-label="Fermer">×</button>
@@ -3033,7 +3045,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <div class="workspace-actions">
     <button class="tool-produce" id="sepBuild" type="button">Produire</button>
     <button class="workspace-reset" id="sepWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
-    <button class="tool-info" id="sepHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2c" title="Manuel">i</button>
+    <button class="tool-info" id="sepHelp" type="button" aria-label="Ouvrir le manuel de l’espace 1c" title="Manuel">i</button>
   </div>
 </div>
 
@@ -3128,7 +3140,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="focus-panel hidden sep-image-focus" id="sepFocusPanel" aria-hidden="true">
   <div class="focus-panel-head">
     <div>
-      <div class="focus-panel-kicker">2c. Images séparées</div>
+      <div class="focus-panel-kicker">1c. Images séparées</div>
       <h3 id="sepFocusTitle">Réglage image</h3>
     </div>
     <button id="sepFocusClose" type="button" aria-label="Fermer">×</button>
@@ -3170,7 +3182,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="focus-panel hidden" id="sepHelpPanel" aria-hidden="true">
   <div class="focus-panel-head">
     <div>
-      <div class="focus-panel-kicker">2c. Images séparées</div>
+      <div class="focus-panel-kicker">1c. Images séparées</div>
       <h3>Assembler les cases</h3>
     </div>
     <button id="sepHelpClose" type="button" aria-label="Fermer">×</button>
@@ -3227,7 +3239,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <div class="workspace-actions">
     <button class="tool-produce" id="irrBuild" type="button">Produire</button>
     <button class="workspace-reset" id="irrWorkspaceReset" type="button" title="Vider et réinitialiser cet espace de travail" aria-label="Vider et réinitialiser cet espace de travail">×</button>
-    <button class="tool-info" id="irrHelp" type="button" aria-label="Ouvrir le manuel de l’espace 2b" title="Manuel">i</button>
+    <button class="tool-info" id="irrHelp" type="button" aria-label="Ouvrir le manuel de l’espace 1b" title="Manuel">i</button>
   </div>
 </div>
 
@@ -3253,7 +3265,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="focus-panel hidden" id="irrHelpPanel" aria-hidden="true">
   <div class="focus-panel-head">
     <div>
-      <div class="focus-panel-kicker">2b. Strip libre</div>
+      <div class="focus-panel-kicker">1b. Strip libre</div>
       <h3>Découpe libre</h3>
     </div>
     <button id="irrHelpClose" type="button" aria-label="Fermer">×</button>
@@ -3303,7 +3315,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <aside class="panel">
 <div class="group">
 <p class="title">Éléments disponibles</p>
-<div class="status" id="exportState"><strong>Aucune sortie disponible.</strong><br/>Valider d’abord une image dans l’étape 2.</div>
+<div class="status" id="exportState"><strong>Aucune sortie disponible.</strong><br/>Valider d’abord une image dans l’étape 1.</div>
 </div>
 <div class="group">
 <p class="title">À exporter</p>
@@ -3340,10 +3352,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <section class="preview">
 <div class="head"><strong>Aperçu des sorties mémorisées</strong><span id="exportPreviewInfo"></span></div>
 <div class="stage" id="exportPreviewStage">
-<div class="empty" id="exportEmpty">Les sorties générées à l’étape 2 seront conservées ici pour l’export.</div>
+<div class="empty" id="exportEmpty">Les sorties générées à l’étape 1 seront conservées ici pour l’export.</div>
 <div class="hidden" id="exportPreviewList" style="width:100%;display:grid;gap:14px"></div>
 </div>
-<details class="mini-info mini-info-note"><summary aria-label="Information">i</summary><div class="mini-info-pop">L’étape 3 réutilise les sorties validées à l’étape 2 sans demander un nouvel import.</div></details>
+<details class="mini-info mini-info-note"><summary aria-label="Information">i</summary><div class="mini-info-pop">L’étape 2 réutilise les sorties validées à l’étape 1 sans demander un nouvel import.</div></details>
 </section>
 </section>
 <footer class="eba-footer">
@@ -4998,7 +5010,7 @@ $('importLayoutMode').addEventListener('change',()=>{
 });
 
 
-// ---------- 2b. Strip libre : découpage et mémoire de session ----------
+// ---------- 1b. Strip libre : découpage et mémoire de session ----------
 const irrCanvas=$('irrCanvas');
 const irrCtx=irrCanvas.getContext('2d');
 let irrImage=null;
@@ -5473,7 +5485,7 @@ $('irrBuild').onclick=()=>{
 $('irrGoExports').onclick=()=>showTab('export');
 
 
-// ---------- 2c. Images séparées : import, cadrage et compositions ----------
+// ---------- 1c. Images séparées : import, cadrage et compositions ----------
 
 function sepLayout(){
   const mode=$('sepLayoutMode').value;
@@ -5895,7 +5907,7 @@ const endSepFocusDrag=e=>{
 $('sepFocusCanvas').addEventListener('pointerup',endSepFocusDrag);
 $('sepFocusCanvas').addEventListener('pointercancel',endSepFocusDrag);
 
-// Le déplacement direct est volontairement désactivé dans l’espace de travail 2c.
+// Le déplacement direct est volontairement désactivé dans l’espace de travail 1c.
 // Les images ne se déplacent que dans le panneau « Réglage image » afin d’éviter
 // les modifications accidentelles au doigt ou à la souris.
 
@@ -6057,7 +6069,7 @@ function refreshExportView(){
   const info=$('exportPreviewInfo');
 
   if(!lastExportSet){
-    state.innerHTML='<strong>Aucune sortie disponible.</strong><br>Valider d’abord une image dans l’étape 2.';
+    state.innerHTML='<strong>Aucune sortie disponible.</strong><br>Valider d’abord une image dans l’étape 1.';
     empty.classList.remove('hidden');
     list.classList.add('hidden');
     list.innerHTML='';
@@ -6548,6 +6560,13 @@ $('sepWorkspaceReset').addEventListener('click', resetSeparateWorkspace);
 // ---------- bilingual interface FR / EN ----------
 // Traductions des textes de l’interface ; les données personnelles sont exclues.
 const STRIP_I18N_EN = {
+  "1a. Strip / 2 × 2": "1a. Strip / 2 × 2",
+  "1b. Strip libre": "1b. Free strip",
+  "1c. Images séparées": "1c. Separate images",
+  "3. Gabarit": "3. Template",
+  "Ouvrir le manuel de l’espace 1a": "Open the 1a workspace manual",
+  "Ouvrir le manuel de l’espace 1b": "Open the 1b workspace manual",
+  "Ouvrir le manuel de l’espace 1c": "Open the 1c workspace manual",
   "Ouvrir le manuel du gabarit": "Open the template manual",
   "Manuel du gabarit": "Template manual",
   "Préparer le format": "Prepare the format",
@@ -6562,9 +6581,6 @@ const STRIP_I18N_EN = {
   "Presets et sortie": "Presets and output",
   "Donner un nom au gabarit, puis l’enregistrer pour retrouver ses réglages plus tard dans ce navigateur.": "Name the template, then save it to retrieve its settings later in this browser.",
   "Exporter en PNG 300 dpi, SVG ou imprimer/enregistrer en PDF avec le navigateur.": "Export as 300 dpi PNG or SVG, or print/save as PDF with the browser.",
-  "Ouvrir le manuel de l’espace 2a": "Open the 2a workspace manual",
-  "Ouvrir le manuel de l’espace 2b": "Open the 2b workspace manual",
-  "Ouvrir le manuel de l’espace 2c": "Open the 2c workspace manual",
   "Manuel": "Manual",
   "Assembler les cases": "Assemble panels",
   "Importer les images": "Import images",
@@ -6650,7 +6666,6 @@ const STRIP_I18N_EN = {
   "Importer le gabarit rempli, puis placer les guides sur les bords de la zone utile.": "Import the completed template, then place the guides on the edges of the useful area.",
   "En attente.": "Waiting.",
   "Importer une image pour commencer.": "Import an image to begin.",
-  "2a. Strip / 2 × 2": "2a. Strip / 2 × 2",
   "Découpe et recalage": "Cropping and alignment",
   "Découpage des cases": "Panel cutting",
   "produit quatre images individuelles. Les variantes 1–2 ou 3–4 conservent ces zones doubles entières.": "produces four individual images. The 1–2 or 3–4 variants keep those double areas intact.",
@@ -6682,7 +6697,6 @@ const STRIP_I18N_EN = {
   "Case 3": "Panel 3",
   "Case 4": "Panel 4",
   "Importer les images pour commencer.": "Import images to begin.",
-  "2c. Images séparées": "2c. Separate images",
   "Réglage image": "Image settings",
   "Zoom": "Zoom",
   "Déplacement horizontal": "Horizontal position",
@@ -6696,7 +6710,6 @@ const STRIP_I18N_EN = {
   "Images mémorisées": "Stored images",
   "0 strip mémorisé.": "0 stored strips.",
   "Importer un strip pour commencer.": "Import a strip to begin.",
-  "2b. Strip libre": "2b. Free strip",
   "Découpe libre": "Free cutting",
   "Définir la zone": "Define the area",
   "Importer un strip, puis placer le cadre rouge autour de la zone utile.": "Import a strip, then place the red frame around the useful area.",
@@ -6718,7 +6731,7 @@ const STRIP_I18N_EN = {
   "Résultat — Strip libre": "Result — Free strip",
   "Éléments disponibles": "Available items",
   "Aucune sortie disponible.": "No output available.",
-  "Valider d’abord une image dans l’étape 2.": "Validate an image in step 2 first.",
+  "Valider d’abord une image dans l’étape 1.": "Validate an image in step 1 first.",
   "À exporter": "To export",
   "Images": "Images",
   "Nom": "Name",
@@ -6731,8 +6744,8 @@ const STRIP_I18N_EN = {
   "Réseaux : images et 2 × 2 en 1080 × 1350 px (4:5) ; strip en 1080 × 566 px (1,91:1) ; yonkoma en 1080 × 1920 px. Fond blanc, sans recadrage du dessin.": "Social: images and 2 × 2 at 1080 × 1350 px (4:5); strip at 1080 × 566 px (1.91:1); yonkoma at 1080 × 1920 px. White background, no cropping of the artwork.",
   "Exporter la sélection": "Export selection",
   "Aperçu des sorties mémorisées": "Preview stored outputs",
-  "Les sorties générées à l’étape 2 seront conservées ici pour l’export.": "Outputs generated in step 2 are kept here for export.",
-  "L’étape 3 réutilise les sorties validées à l’étape 2 sans demander un nouvel import.": "Step 3 reuses outputs validated in step 2 without requiring a new import.",
+  "Les sorties générées à l’étape 1 seront conservées ici pour l’export.": "Outputs generated in step 1 are kept here for export.",
+  "L’étape 2 réutilise les sorties validées à l’étape 1 sans demander un nouvel import.": "Step 2 reuses outputs validated in step 1 without requiring a new import.",
   "Prêt.": "Ready.",
   "Toutes les images nécessaires sont importées.": "All required images are imported.",
   "Aucune image.": "No image.",
