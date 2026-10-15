@@ -3,8 +3,8 @@
 Eigrutel Lab - Atelier d'outils libres pour la bande dessinée
 Programme conçu et développé par Simon Léturgie dans le cadre d'Eigrutel BD Academy.
 Nom : Strip
-Version : 1.0.0
-Date : 16-09-2026
+Version : 1.0.1
+Date : 15-10-2026
 Code : GNU AGPL v3.0 ou version ultérieure.
 Documentation et modèles : CC BY-SA 4.0, sauf mention contraire.
 Marques, logos et signes distinctifs Eigrutel / Eigrutel Lab / Eigrutel BD Academy : réservés.
@@ -3346,6 +3346,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <div class="group">
 <div class="actions">
 <button class="primary" id="exportSelection" type="button">Exporter la sélection</button>
+<p class="export-note" id="exportKeepNote" role="status">Après l’export, les images et les réglages restent disponibles dans les espaces 1a, 1b et 1c. Vous pouvez choisir un autre format et exporter à nouveau.</p>
 </div>
 </div>
 </aside>
@@ -6405,6 +6406,8 @@ $('exportSelection').addEventListener('click',async()=>{
   }
   const preset=$('exportPreset').value;
   const prefix=exportPrefix();
+  const note=$('exportKeepNote');
+  if(note)note.textContent=stripTranslateDynamic('Préparation de l’export sans effacer les espaces de travail…',stripLang);
   const button=$('exportSelection');
   button.disabled=true;
   button.textContent='Préparation…';
@@ -6427,6 +6430,10 @@ $('exportSelection').addEventListener('click',async()=>{
       const blob=await zip.generateAsync({type:'blob'});
       download(blob,`${prefix}.zip`);
     }
+    // L’export est une opération non destructive : ne modifier aucun atelier.
+    // Un second export (par exemple Print après Réseaux) réutilise les mêmes sources.
+    const note=$('exportKeepNote');
+    if(note) note.textContent=stripTranslateDynamic('Export préparé. Vos images et réglages sont conservés : vous pouvez changer de format et exporter à nouveau.',stripLang);
   }catch(err){
     console.error(err);
     alert(stripTranslateDynamic("L'export n'a pas pu être généré.", stripLang));
